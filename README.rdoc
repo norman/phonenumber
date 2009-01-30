@@ -16,6 +16,15 @@ At the moment, you can basically do this:
   pn.prefix # "854"
   pn.line_number # "1224"
 
+International support is planned. I'll be doing Argentina next, and would love
+help with creating "drivers" for other countries.
+
+At the moment the extent of international support is this:
+
+  pn = PhoneNumber.new("+54-11-4444-4444")
+  pn.country_code # "54"
+  pn.country # "AR"
+
 
 Copyright (c) 2009 Norman Clarke
 
