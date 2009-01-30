@@ -1,7 +1,7 @@
 require 'newgem'
-require File.dirname(__FILE__) + '/lib/phone_number'
+require File.dirname(__FILE__) + '/lib/phone_number/version.rb'
 
-$hoe = Hoe.new('phonenumber', PhoneNumber::VERSION) do |p|
+$hoe = Hoe.new('phonenumber', PhoneNumber::Version::STRING) do |p|
   p.developer('Norman Clarke', 'norman@randomba.org')
   p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   p.rubyforge_name       = p.name # TODO this is default value

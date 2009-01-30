@@ -1,32 +1,23 @@
-= phonenumber
+= PhoneNumber
 
-* FIX (url)
+This library will eventually allow you to extract information from, and format
+phone numbers.
 
-== DESCRIPTION:
+It is in an early alpha stage of development right now. Don't use it! I'm actively
+hacking this and all sorts of stuff is likely to change.
 
-FIX (describe your package)
+At the moment, you can basically do this:
 
-== FEATURES/PROBLEMS:
+  pn = PhoneNumber.new("1-206-854-1224")
+  pn.country_code # "1"
+  pn.country # "US"
+  pn.region # "WA"
+  pn.area_code # 206
+  pn.prefix # "854"
+  pn.line_number # "1224"
 
-* FIX (list of features or problems)
 
-== SYNOPSIS:
-
-  FIX (code sample of usage)
-
-== REQUIREMENTS:
-
-* FIX (list of requirements)
-
-== INSTALL:
-
-* FIX (sudo gem install, anything else)
-
-== LICENSE:
-
-(The MIT License)
-
-Copyright (c) 2009 FIXME full name
+Copyright (c) 2009 Norman Clarke
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
