@@ -14,7 +14,7 @@ module CountryCode
   end
 
   # Maps numeric country prefix to country ISO's. Taken from {Wikipedia}[http://en.wikipedia.org/wiki/List_of_country_calling_codes].
-  PREFIXES = {
+  CODES = {
     "1"   => ["US", "CA", "BS", "BB", "AI", "AG", "VG", "VI", "KY", "BM", "GD", "TC", "MS", "MP", "GU", "AS", "LC", "DM", "VC", "PR", "DO", "DO", "TT", "KN", "JM", "PR"],
     "20"  => ["EG"],
     "210" => [],

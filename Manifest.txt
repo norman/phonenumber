@@ -9,7 +9,10 @@ lib/phone_number.rb
 lib/phone_number/country_code.rb
 lib/phone_number/country_code/base.rb
 lib/phone_number/country_code/country_code_1.rb
+lib/phone_number/country_code/country_code_54.rb
 lib/phone_number/version.rb
+phonenumber.gemspec
 test/test_country_code_1.rb
+test/test_country_code_54.rb
 test/test_helper.rb
 test/test_phone_number.rb

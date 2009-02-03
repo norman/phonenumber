@@ -11,7 +11,8 @@ $hoe = Hoe.new('phonenumber', PhoneNumber::Version::STRING) do |p|
   #   ['activesupport','>= 2.0.2'],
   # ]
   p.extra_dev_deps = [
-    ['newgem', ">= #{::Newgem::VERSION}"]
+    ['newgem', ">= #{::Newgem::VERSION}"],
+    ['Shoulda', ">= 1.2.0"]
   ]
   p.clean_globs |= %w[**/.DS_Store tmp *.log]
   p.remote_rdoc_dir = ''
