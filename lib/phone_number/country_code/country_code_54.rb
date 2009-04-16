@@ -14,7 +14,8 @@ class CountryCode::CountryCode54 < CountryCode::Base
     end
 
     def real_number(phone_number)
-      phone_number.number.to_s.gsub(/\A0|\A54/, '')
+      num = phone_number.number.to_s.gsub(/\A0|\A54/, '')
+      num =~ /^4[\d]{7}/ ? "11#{num}" : num
     end
 
     def area_code(phone_number)

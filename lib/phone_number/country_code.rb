@@ -11,6 +11,15 @@ module CountryCode
         CountryCode::Base
       end
     end
+    
+    # Return the numeric country code for the given ISO.
+    def code(iso)
+      CODES.select {|x| x[1].include?(iso)}[0][0]
+    rescue NoMethodError
+      nil
+    end
+    
+    
   end
 
   # Maps numeric country prefix to country ISO's. Taken from {Wikipedia}[http://en.wikipedia.org/wiki/List_of_country_calling_codes].

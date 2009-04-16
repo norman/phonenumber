@@ -13,19 +13,19 @@ class CountryCode::CountryCode1 < CountryCode::Base
     end
     
     def real_number(phone_number)
-      phone_number.number.to_s.gsub(/^1/, '')
+      phone_number.number.to_s.gsub(/\A1/, '')
     end
 
     def area_code(phone_number)
-      phone_number.real_number.slice(0..2).to_s
+      phone_number.real_number.slice(0, 3).to_s
     end
 
     def prefix(phone_number)
-      phone_number.real_number.slice(3..5).to_s
+      phone_number.real_number.slice(3, 3).to_s
     end
 
     def line_number(phone_number)
-      phone_number.real_number.slice(6..9).to_s
+      phone_number.real_number.slice(6, 4).to_s
     end
 
     def region(phone_number)
