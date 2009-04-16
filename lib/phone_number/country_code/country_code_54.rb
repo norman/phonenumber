@@ -15,19 +15,19 @@ class CountryCode::CountryCode54 < CountryCode::Base
 
     def real_number(phone_number)
       num = phone_number.number.to_s.gsub(/\A0|\A54/, '')
-      num =~ /^4[\d]{7}/ ? "11#{num}" : num
+      num =~ /^4[\d]{7}/ || num =~ /^15[\d]{8}/ ? "11#{num}" : num
     end
 
     def area_code(phone_number)
       # Strip international local prefix for cell phones
       ln = phone_number.real_number.gsub(/\A9/, '')
       [4,3,2].each {|i| return ln.slice(0, i) if AREA_CODES[ln.slice(0, i)] }
-      return ""
+      ""
     end
 
     def local_prefix(phone_number)
       if phone_number.real_number =~ /\A9/
-        return "9"
+        "9"
       elsif phone_number.real_number.slice(phone_number.area_code.length, 2) == "15"
         "15"
       end
@@ -36,7 +36,7 @@ class CountryCode::CountryCode54 < CountryCode::Base
     def prefix(phone_number)
       ln = phone_number.real_number_without_local_prefix
       if phone_number.area_code.length == 4
-        ln.slice(3, 3)
+        ln.slice(4, 2)
       elsif phone_number.area_code.length == 3
         ln.slice(3, 3)
       else
@@ -72,8 +72,39 @@ class CountryCode::CountryCode54 < CountryCode::Base
     end
 
   end
+  
+  REGION_NAMES = {
+    "C" => 	"Capital Federal",
+    "B" => 	"Buenos Aires",
+    "K" => 	"Catamarca",
+    "X" => 	"Córdoba",
+    "W" => 	"Corrientes",
+    "H" => 	"Chaco",
+    "U" => 	"Chubut",
+    "E" => 	"Entre Ríos",
+    "P" => 	"Formosa",
+    "Y" => 	"Jujuy",
+    "L" => 	"La Pampa",
+    "F" => 	"La Rioja",
+    "M" => 	"Mendoza",
+    "N" => 	"Misiones",
+    "Q" => 	"Neuquén",
+    "R" => 	"Río Negro",
+    "A" => 	"Salta",
+    "J" => 	"San Juan",
+    "D" => 	"San Luis",
+    "Z" => 	"Santa Cruz",
+    "S" => 	"Santa Fe",
+    "G" => 	"Santiago del Estero",
+    "V" => 	"Tierra del Fuego",
+    "T" => 	"Tucumán"
+  }.freeze
 
   AREA_CODES = {
+    "800"     => {:city => "", :region => "", :note => "Toll free"},
+    "810"     => {:city => "", :region => "", :note => "Nationwide local calling"},
+    "610"     => {:city => "", :region => "", :note => "Dialup Internet access"},
+    "609"     => {:city => "", :region => "", :note => "Gaming number"},
     "11"     => {:city => "Buenos Aires", :region => "C"},
     "220"    => {:city => "Merlo", :region => "B"},
     "2202"   => {:city => "González Catán", :region => "B"},
@@ -374,5 +405,5 @@ class CountryCode::CountryCode54 < CountryCode::Base
     "3891"   => {:city => "La Madrid", :region => "T"},
     "3892"   => {:city => "Amaicha del Valle", :region => "T"},
     "3894"   => {:city => "Burruyacu", :region => "T"}
-  }
+  }.freeze
 end
